@@ -89,4 +89,19 @@ def main():
           print
   print
 
+
+def dices():
+  seed = 27862
+  sgenrand(seed)
+  j=0
+  while True:
+      r = int(genrand()*7) + 1
+      sys.stdout.write('%s ' % r)
+      j = j+1
+      if (j%30) == 29:
+          j = 0
+          print
+  print
+
 main()
+#dices()
