@@ -1,12 +1,13 @@
 #!/usr/local/bin/python
-from random import randint
+from random import randint, seed
 
 def random_dice():
     return randint(1, 6)
 
 def report(tot, extracted):
-    print "After {0} extraction, these are the frequencies".format(tot)
+    print "After {0} extraction, these are the number extracted".format(tot)
     print extracted
+    print "There are the frequencies"
     sumt = 0.0 + sum(extracted)
     frequency = [ n/sumt for n in extracted]
     print frequency
@@ -14,10 +15,11 @@ def report(tot, extracted):
 
 extracted = [0,0,0,0,0,0]
 
-i = 0
-while True:
-    i = i + 1
+seed()
+number_of_extractions = 1500000
+
+for i in range(number_of_extractions):
     dice = random_dice()
     extracted[dice-1] = extracted[dice-1]+1
-    if i%1000000 == 0:
-        report(i, extracted)
+
+report(number_of_extractions, extracted)
